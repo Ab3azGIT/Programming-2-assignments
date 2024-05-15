@@ -1,0 +1,65 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# Function to calculate monthly payment
+def calculate_payment():
+    job = job_var.get()
+    amount = amount_entry.get()
+    years = years_var.get()
+    
+    try:
+        amount = float(amount)
+        if job == "Select Job" or years == "Select Years":
+            raise ValueError
+        if years == "1 year":
+            interest_rate = 13.76
+        elif years == "3 years":
+            interest_rate = 14.06
+        elif years == "5 years":
+            interest_rate = 14.87
+        elif years == "7 years":
+            interest_rate = 15.71
+        
+        interest = amount * (interest_rate / 100)
+        total_loan = amount + (interest * int(years[0]))
+        monthly_payment = total_loan / (int(years[0]) * 12)
+        
+        result_label.config(text=f"Pay/month: {monthly_payment:.2f}")
+    except ValueError:
+        messagebox.showerror("Error", "Invalid input! Please enter valid values.")
+
+# Creating main window
+root = tk.Tk()
+root.title("Bank Misr - Plan Your Loan Application")
+root.geometry("300x300")
+
+# Job dropdown
+job_var = tk.StringVar(root)
+job_var.set("Select Job")
+job_options = ["Select Job", "Doctor", "Engineer", "Teacher"]
+job_menu = tk.OptionMenu(root, job_var, *job_options)
+job_menu.pack(pady=10)
+
+# Loan amount entry
+amount_label = tk.Label(root, text="Loan Amount:")
+amount_label.pack()
+amount_entry = tk.Entry(root)
+amount_entry.pack(pady=5)
+
+# Years dropdown
+years_var = tk.StringVar(root)
+years_var.set("Select Years")
+years_options = ["Select Years", "1 year", "3 years", "5 years", "7 years"]
+years_menu = tk.OptionMenu(root, years_var, *years_options)
+years_menu.pack(pady=10)
+
+# Calculate button
+calculate_button = tk.Button(root, text="Calculate", command=calculate_payment)
+calculate_button.pack(pady=10)
+
+# Result label
+result_label = tk.Label(root, text="")
+result_label.pack(pady=5)
+
+root.mainloop()
+
