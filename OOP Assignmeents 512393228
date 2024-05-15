@@ -1,0 +1,137 @@
+class Product:
+    supermarket_name = "Abdelaziz Supermarket"
+
+    def __init__(self, product_ID, name, price, manufacturer, weight, expiration_date, year):
+        self.__product_ID = product_ID
+        self.name = name
+        self.price = price
+        self.manufacturer = manufacturer
+        self.weight = weight
+        self.expiration_date = expiration_date
+        self.year = year
+
+    def print_product_details(self):
+        print("Product Details:")
+        print(f"Supermarket Name: {self.supermarket_name}")
+        print(f"Product ID: {self.__product_ID}")
+        print(f"Name: {self.name}")
+        print(f"Price: {self.price}")
+        print(f"Manufacturer: {self.manufacturer}")
+        print(f"Weight: {self.weight}")
+        print(f"Expiration Date: {self.expiration_date}")
+        print(f"Year: {self.year}")
+
+
+class Healthy(Product):
+    def __init__(self, product_ID, name, price, manufacturer, weight, expiration_date, year):
+        super().__init__(product_ID, name, price, manufacturer, weight, expiration_date, year)
+        self.calories = 0
+        self.components = []
+
+    def add_calories(self, calories):
+        self.calories = calories
+
+    def add_component(self, component):
+        self.components.append(component)
+
+    def print_healthy_product_details(self):
+        print("Healthy Product Details:")
+        super().print_product_details()
+        print(f"Calories: {self.calories}")
+        print("Components:", ', '.join(self.components))
+
+    def calculate_total_calories(self):
+        total_calories = self.calories * self.weight
+        return total_calories
+
+
+def main():
+    while True:
+        print("\nWelcome to Abdelaziz Supermarket Cashier System")
+        print("1. Product")
+        print("2. Healthy")
+        print("3. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            product_options()
+        elif choice == "2":
+            healthy_options()
+        elif choice == "3":
+            print("Exiting the Supermarket Cashier System. Goodbye!")
+            break
+        else:
+            print("Invalid option. Please choose again.")
+
+
+def product_options():
+    while True:
+        print("\nProduct Options:")
+        print("1. Add new Product")
+        print("2. Display Product Details")
+        print("3. Change/Edit product_ID")
+        print("4. Exit the sub-system")
+        print("5. Exit the Supermarket cashier system")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            # Add new Product
+            pass  # Implement this functionality
+        elif choice == "2":
+            # Display Product Details
+            pass  # Implement this functionality
+        elif choice == "3":
+            # Change/Edit product_ID
+            pass  # Implement this functionality
+        elif choice == "4":
+            # Exit the sub-system
+            break
+        elif choice == "5":
+            print("Exiting the Supermarket Cashier System. Goodbye!")
+            exit()
+        else:
+            print("Invalid option. Please choose again.")
+
+
+def healthy_options():
+    while True:
+        print("\nHealthy Options:")
+        print("1. Add new Healthy Product")
+        print("2. Display Healthy Product Details")
+        print("3. Change/Edit calories")
+        print("4. Check calories and components of Healthy Product")
+        print("5. Compute total calories of the Healthy Product")
+        print("6. Exit the sub-system")
+        print("7. Exit the Supermarket cashier system")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            # Add new Healthy Product
+            pass  # Implement this functionality
+        elif choice == "2":
+            # Display Healthy Product Details
+            pass  # Implement this functionality
+        elif choice == "3":
+            # Change/Edit calories
+            pass  # Implement this functionality
+        elif choice == "4":
+            # Check calories and components of Healthy Product
+            pass  # Implement this functionality
+        elif choice == "5":
+            # Compute total calories of the Healthy Product
+            pass  # Implement this functionality
+        elif choice == "6":
+            # Exit the sub-system
+            break
+        elif choice == "7":
+            print("Exiting the Supermarket Cashier System. Goodbye!")
+            exit()
+        else:
+            print("Invalid option. Please choose again.")
+
+
+if __name__ == "__main__":
+    main()
